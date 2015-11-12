@@ -43,7 +43,7 @@ angular.module('starter.controllers', ["highcharts-ng"])
     });
 })
 
-.controller('ChatsCtrl', function ($scope) {
+.controller('ChatsCtrl', function ($scope, $http) {
     $scope.value = false;
 
     $scope.toggleChange = function(){
@@ -52,7 +52,13 @@ angular.module('starter.controllers', ["highcharts-ng"])
       } else {
         $scope.value = false;
       }
-      console.log($scope.value);
+      
+      $http.post('http://localhost:3000/api/1/devices', {led: $scope.value})
+        .then(function (response, status) {
+          alert(JSON.stringify(response));
+        }, function (err) {
+          alert(JSON.stringify(err));
+        });
     };
 })
 
