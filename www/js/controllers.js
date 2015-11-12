@@ -1,7 +1,7 @@
 angular.module('starter.controllers', ["highcharts-ng"])
 
 .controller('DashCtrl', function ($scope, $http) {
-    $http.get('http://localhost:3000/api/1/devices/1/results')
+    $http.get('http://192.168.3.12:3000/api/1/devices/1/results')
     .then(function(response){
       var data = [];
       $.each(response.data, function(key, val) {
