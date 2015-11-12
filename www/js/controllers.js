@@ -3,7 +3,6 @@ angular.module('starter.controllers', ["highcharts-ng"])
 .controller('DashCtrl', function ($scope, $http) {
     $http.get('http://localhost:3000/api/1/devices/1/results')
     .then(function(response){
-      console.log(response.data);
       var data = [];
       $.each(response.data, function(key, val) {
         data.push(val.temperature);
@@ -11,7 +10,7 @@ angular.module('starter.controllers', ["highcharts-ng"])
       $scope.chartConfig = {
         title: {
           text: '月平均气温',
-          x: -20 //center
+          x: -20
         },
         xAxis: {
           categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -44,11 +43,17 @@ angular.module('starter.controllers', ["highcharts-ng"])
     });
 })
 
-.controller('ChatsCtrl', function ($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function (chat) {
-    Chats.remove(chat);
-  };
+.controller('ChatsCtrl', function ($scope) {
+    $scope.value = false;
+
+    $scope.toggleChange = function(){
+      if($scope.value == false) {
+        $scope.value = true;
+      } else {
+        $scope.value = false;
+      }
+      console.log($scope.value);
+    };
 })
 
 .controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
