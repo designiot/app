@@ -13,8 +13,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
 
     if($localstorage.get('api_server') === undefined) {
-      $localstorage.set('api_server', "http://localhost:3000/api/1/devices/1/results");
-      $localstorage.set('control_url', "http://localhost:3000/api/1/devices");
+      $localstorage.set('api_server', "http://localhost:3000/user/1/devices/1/results");
+      $localstorage.set('control_url', "http://localhost:3000/user/1/devices");
     }
   });
 })
