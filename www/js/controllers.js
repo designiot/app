@@ -1,7 +1,8 @@
 angular.module('starter.controllers', ["highcharts-ng"])
 
-.controller('DashCtrl', function ($scope, $http) {
-    $http.get('http://192.168.3.12:3000/api/1/devices/1/results')
+.controller('DashCtrl', function ($scope, $http, $localstorage) {
+    var apiServerUrl = $localstorage.get('api_server');
+    $http.get(apiServerUrl)
     .then(function(response){
       var data = [];
       $.each(response.data, function(key, val) {
@@ -62,8 +63,14 @@ angular.module('starter.controllers', ["highcharts-ng"])
     };
 })
 
-.controller('AccountCtrl', function ($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('AccountCtrl', function ($scope, $localstorage) {
+    $scope.data = {};
+    $scope.placeholder = {
+      api_server: $localstorage.get('api_server')
+    };
+
+    $scope.setting =  function () {
+      $scope.data = angular.extend($scope.placeholder, $scope.data);
+      $localstorage.set('api_server', $scope.data.api_server);
+    }
 });
