@@ -2,8 +2,12 @@
   <ion-content>
     <div class="list">
       <label class="item item-input">
-        <span class="input-label">API服务器</span>
+        <span class="input-label">API URL</span>
         <input type="text" placeholder="{{placeholder.api_server}}" ng-model="data.api_server">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">API控制URL</span>
+        <input type="text" placeholder="{{placeholder.control_url}}" ng-model="data.control_url">
       </label>
       <button type="submit" class="button button-positive button-block" ng-click="setting()">确定</button>
     </div>

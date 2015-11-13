@@ -44,7 +44,7 @@ angular.module('starter.controllers', ["highcharts-ng"])
     });
 })
 
-.controller('ControlCtrl', function ($scope, $http) {
+.controller('ControlCtrl', function ($scope, $http, $localstorage) {
     $scope.value = false;
 
     $scope.toggleChange = function(){
@@ -54,7 +54,8 @@ angular.module('starter.controllers', ["highcharts-ng"])
         $scope.value = false;
       }
 
-      $http.post('http://localhost:3000/api/1/devices', {led: $scope.value})
+      var controlUrl = $localstorage.get('control_url');
+      $http.post(controlUrl, {led: $scope.value})
         .then(function (response, status) {
           alert(JSON.stringify(response));
         }, function (err) {
@@ -66,7 +67,8 @@ angular.module('starter.controllers', ["highcharts-ng"])
 .controller('AccountCtrl', function ($scope, $localstorage) {
     $scope.data = {};
     $scope.placeholder = {
-      api_server: $localstorage.get('api_server')
+      api_server: $localstorage.get('api_server'),
+      control_url: $localstorage.get('control_url')
     };
 
     $scope.setting =  function () {
