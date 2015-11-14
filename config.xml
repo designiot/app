@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.app765773" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>app</name>
+<widget id="com.phodal.designiot" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>物联网应用 Demo</name>
   <description>
-        An Ionic Framework and Cordova project.
+    《物联网系统设计实战》示例程序
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="h@phodal.com" href="https://www.phodal.com">
+      Phodal Huang
     </author>
   <content src="index.html"/>
   <access origin="*"/>
