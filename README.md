@@ -19,3 +19,7 @@
     ionic platform add android
     ionic run android
     
+    
+##Plugin List
+
+ - cordova-plugin-bluetooth-serial
