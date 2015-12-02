@@ -78,10 +78,15 @@ angular.module('starter.controllers', ["highcharts-ng"])
   $scope.connect = function (address) {
     $scope.data = "connecting....";
     $cordovaBluetoothSerial.connect(address).then(function (err) {
-      alert(JSON.stringify(err));
       $scope.data = "connected";
       $cordovaBluetoothSerial.read().then(function (result) {
         $scope.data = result;
+        $http.post($localstorage.get('control_url'), {temperature: result})
+          .then(function (response, status) {
+            console.log(JSON.stringify(response));
+          }, function (err) {
+            console.log(JSON.stringify(err));
+          });
       })
     });
   };
