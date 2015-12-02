@@ -19,6 +19,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
+.config(function($ionicConfigProvider){
+  $ionicConfigProvider.tabs.position('bottom');
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('tab', {
@@ -35,6 +39,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
         controller: 'DashCtrl'
+      }
+    }
+  })
+
+  .state('tab.bluetooth', {
+    url: '/bluetooth',
+    views: {
+      'tab-bluetooth': {
+        templateUrl: 'templates/tab-bluetooth.html',
+        controller: 'BlueToothCtrl'
       }
     }
   })
