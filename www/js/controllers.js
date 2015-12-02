@@ -48,6 +48,7 @@ angular.module('starter.controllers', ["highcharts-ng"])
   $scope.discoverDevices = {};
   $scope.listDevices = {};
   $scope.status = "未连接";
+  $scope.data = "loading...";
   $ionicPlatform.ready(function () {
     $cordovaBluetoothSerial.isConnected().then(function (result) {
       $scope.status = "已连接";
@@ -74,14 +75,15 @@ angular.module('starter.controllers', ["highcharts-ng"])
     });
   };
 
-  $scope.connect = function (address, device) {
-    $cordovaBluetoothSerial.connect(address).then(function (result) {
-      localStorage.setItem("last_device",  device);
-      $state.go('tab.color');
+  $scope.connect = function (address) {
+    $scope.data = "connecting....";
+    $cordovaBluetoothSerial.connect(address).then(function (err) {
+      alert(JSON.stringify(err));
+      $scope.data = "connected";
+      $cordovaBluetoothSerial.read().then(function (result) {
+        $scope.data = result;
+      })
     });
-    $cordovaBluetoothSerial.subscribeRawData().then(function (result) {
-      console.log("raw data" + result);
-    })
   };
 })
 
