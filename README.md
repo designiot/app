@@ -20,6 +20,12 @@
     ionic run android
     
     
-##Plugin List
+##Plugin Lists
 
  - cordova-plugin-bluetooth-serial
+
+##License
+
+© 2015 [Phodal Huang][phodal]. This code is distributed under the MIT license.
+
+[phodal]:http://www.phodal.com/
